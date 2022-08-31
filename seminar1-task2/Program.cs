@@ -10,38 +10,38 @@ string? inputLineB = Console.ReadLine();
 
 if (inputLineA != null && inputLineB != null)
 {
-    int inputNumberA = int.Parse(inputLineA);
+    int inputNumberA = int.Parse(inputLineA); // Преобразование входных данных в целое число
     int inputNumberB = int.Parse(inputLineB);
 
     // Вариант решения 1
-    // string answerMax = "";
+    // string answerMax = ""; // Заводим строковую переменную
 
-    // if (inputNumberA == inputNumberB)
+    // if (inputNumberA == inputNumberB) // Проверяем на равенство двух чисел
     // {
-    //     answerMax = "Два числа равны между собой";
+    //     answerMax = "Два числа равны между собой"; // Сохраняем ответ
     // }
     // else
     // {
-    //     string maxNumberA = "Число " + inputNumberA + " больше, чем число " + inputNumberB;
-    //     string maxNumberB = "Число " + inputNumberB + " больше, чем число " + inputNumberA;
-    //     answerMax = inputNumberA > inputNumberB ? maxNumberA : maxNumberB;
+    //     string maxNumberA = "Число " + inputNumberA + " больше, чем число " + inputNumberB; // Подготовили строку с первым ответом
+    //     string maxNumberB = "Число " + inputNumberB + " больше, чем число " + inputNumberA; // Подготовили строку со вторым ответом
+    //     answerMax = inputNumberA > inputNumberB ? maxNumberA : maxNumberB; // Сохраняем ответ в зависимости от чисел
     // }
 
-    // Console.WriteLine(answerMax);
+    // Console.WriteLine(answerMax); // Вывод ответа в консоль
     // =================
 
     // Вариант решения 2
-    if (inputNumberA > inputNumberB)
+    if (inputNumberA > inputNumberB) // Проверяем какое из чисел больше
     {
-        Console.WriteLine("Число " + inputNumberA + " больше, чем число " + inputNumberB);
+        Console.WriteLine("Число " + inputNumberA + " больше, чем число " + inputNumberB); // Вывод ответа в консоль
     }
-    else if (inputNumberA < inputNumberB)
+    else if (inputNumberA < inputNumberB) // Проверяем какое из чисел больше
     {
-        Console.WriteLine("Число " + inputNumberB + " больше, чем число " + inputNumberA);
+        Console.WriteLine("Число " + inputNumberB + " больше, чем число " + inputNumberA); // Вывод ответа в консоль
     }
-    else
+    else // Если числа равны
     {
-        Console.WriteLine("Два числа равны между собой");
+        Console.WriteLine("Два числа равны между собой"); // Вывод ответа в консоль
     }
     // =================
 }
