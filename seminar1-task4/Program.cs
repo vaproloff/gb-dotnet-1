@@ -39,13 +39,21 @@ if (inputLineA != null && inputLineB != null && inputLineC != null) // Пров�
     // =================
 
     // Вариант решения 3 - с тернарным оператором
+    // int inputNumberA = int.Parse(inputLineA); // Преобразование входных данных в целое число
+    // int inputNumberB = int.Parse(inputLineB);
+    // int inputNumberC = int.Parse(inputLineC);
+
+    // int maxNumber = inputNumberA > inputNumberB ?
+    //     (inputNumberA > inputNumberC ? inputNumberA : inputNumberC) :
+    //     (inputNumberB > inputNumberC ? inputNumberB : inputNumberC);
+    // Console.WriteLine("Максимальное число: " + maxNumber); // Выводим ответ
+    // =================
+
+    // Вариант решения 4 - с Math.Max
     int inputNumberA = int.Parse(inputLineA); // Преобразование входных данных в целое число
     int inputNumberB = int.Parse(inputLineB);
     int inputNumberC = int.Parse(inputLineC);
 
-    int maxNumber = inputNumberA > inputNumberB ?
-        (inputNumberA > inputNumberC ? inputNumberA : inputNumberC) :
-        (inputNumberB > inputNumberC ? inputNumberB : inputNumberC);
-    Console.WriteLine("Максимальное число: " + maxNumber); // Выводим ответ
+    Console.WriteLine("Максимальное число: " + Math.Max(Math.Max(inputNumberA, inputNumberB), inputNumberC)); // Выводим ответ
     // =================
 }
