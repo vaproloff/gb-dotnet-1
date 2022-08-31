@@ -27,14 +27,25 @@ if (inputLineA != null && inputLineB != null && inputLineC != null) // Пров�
     // =================
 
     // Вариант решения 2
+    // int inputNumberA = int.Parse(inputLineA); // Преобразование входных данных в целое число
+    // int inputNumberB = int.Parse(inputLineB);
+    // int inputNumberC = int.Parse(inputLineC);
+
+    // int maxNumber = inputNumberA; // Вводим переменную для хранения максимального числа, присваиваем первое число
+    // if (inputNumberB > maxNumber) maxNumber = inputNumberB; // Если второе число больше текущего максимального, то второе число - новый максимум
+    // if (inputNumberC > maxNumber) maxNumber = inputNumberC; // Если третье число больше текущего максимального, то третье число - новый максимум
+
+    // Console.WriteLine("Максимальное число: " + maxNumber); // Выводим ответ
+    // =================
+
+    // Вариант решения 3 - с тернарным оператором
     int inputNumberA = int.Parse(inputLineA); // Преобразование входных данных в целое число
     int inputNumberB = int.Parse(inputLineB);
     int inputNumberC = int.Parse(inputLineC);
 
-    int maxNumber = inputNumberA; // Вводим переменную для хранения максимального числа, присваиваем первое число
-    if (inputNumberB > maxNumber) maxNumber = inputNumberB; // Если второе число больше текущего максимального, то второе число - новый максимум
-    if (inputNumberC > maxNumber) maxNumber = inputNumberC; // Если третье число больше текущего максимального, то третье число - новый максимум
-
+    int maxNumber = inputNumberA > inputNumberB ?
+        (inputNumberA > inputNumberC ? inputNumberA : inputNumberC) :
+        (inputNumberB > inputNumberC ? inputNumberB : inputNumberC);
     Console.WriteLine("Максимальное число: " + maxNumber); // Выводим ответ
     // =================
 }
