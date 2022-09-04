@@ -4,15 +4,15 @@
 //=======================================================
 
 // Метод, запрашивающий у пользователя данные
-int AskForData()
+double AskForData()
 {
     Console.Write("Введите число: ");
     string? inputLine = Console.ReadLine();
 
-    int inputNumber = 0;
+    double inputNumber = 0;
 
     // Проверка на текст или null, если число - преобразует
-    if (int.TryParse(inputLine, out inputNumber))
+    if (double.TryParse(inputLine, out inputNumber))
     {
         return inputNumber;
     }
@@ -23,25 +23,34 @@ int AskForData()
 }
 
 // Метод, принимает число, преобразует в массив символов, выводит третий символ
-char extractThirdDigit(int inputLine)
+// char extractThirdDigit(int inputLine, int digitNumber)
+// {
+//     char[] charArray = inputLine.ToString().ToCharArray();
+//     return charArray[digitNumber - 1];
+// }
+
+// Метод, принимает число, преобразует в массив символов, выводит i-й символ
+int extractThirdDigit(double inputNumber, int digitNumber)
 {
-    char[] charArray = inputLine.ToString().ToCharArray();
-    return charArray[2];
+    int quantityOfDigits = (int)Math.Log10(inputNumber) + 1;
+    return (int)(inputNumber / Math.Pow(10, quantityOfDigits - digitNumber)) % 10;
 }
 
 // Метод, вызывает запрос данных пользователя, проверяет, выводит результат
-void FindThirdDigitOfNumber()
+void FindSpecificDigitOfNumber(int digitNumber)
 {
-    int userNumber = AskForData();
+    double userNumber = AskForData();
 
-    if (userNumber > 99)
+    if (userNumber >= Math.Pow(10, digitNumber - 1))
     {
-        Console.WriteLine("Третья цифра: " + extractThirdDigit(userNumber));
+        Console.WriteLine(digitNumber + "-я цифра: " + extractThirdDigit(userNumber, digitNumber));
     }
     else
     {
-        Console.WriteLine("Третьей цифры нет");
+        Console.WriteLine(digitNumber + "-й цифры нет");
     }
 }
 
-FindThirdDigitOfNumber();
+int digitNumber = 3;
+
+FindSpecificDigitOfNumber(digitNumber);
