@@ -15,16 +15,16 @@ Dictionary<int, string> daysOfWeek = new Dictionary<int, string>
     {7, "Воскресенье"}
 };
 
-// Словарь, содержащий дни недели и выходные ли они
-Dictionary<string, bool> weekends = new Dictionary<string, bool>
+// Словарь, содержащий номера дней недели и выходные ли они
+Dictionary<int, bool> weekends = new Dictionary<int, bool>
 {
-    {"Понедельник", false},
-    {"Вторник", false},
-    {"Среда", false},
-    {"Четверг", false},
-    {"Пятница", false},
-    {"Суббота", true},
-    {"Воскресенье", true}
+    {1, false},
+    {2, false},
+    {3, false},
+    {4, false},
+    {5, false},
+    {6, true},
+    {7, true}
 };
 
 // Метод, запрашивающий у пользователя данные
@@ -50,12 +50,11 @@ int AskForData()
 void findIfInputDayIsWeekend()
 {
     int dayNumber = AskForData();
-    string dayOfWeek = "";
 
     // Проверка на вхождение значения в словарь, при успехе - запись в переменную
-    if (daysOfWeek.TryGetValue(dayNumber, out dayOfWeek))
+    if (daysOfWeek.ContainsKey(dayNumber))
     {
-        Console.WriteLine(dayOfWeek + " - " + (weekends[dayOfWeek] ? "выходной день" : "будний день"));
+        Console.WriteLine(daysOfWeek[dayNumber] + " - " + (weekends[dayNumber] ? "выходной день" : "будний день"));
     }
     else
     {
