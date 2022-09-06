@@ -3,46 +3,74 @@
 // и проверяет, является ли одно число квадратом другого.
 //=======================================================
 
-// Метод, запрашивающий у пользователя i-е число
-string AskForNumber(int number)
+// // Метод, запрашивающий у пользователя i-е число
+// string AskForNumber(int number)
+// {
+//     Console.Write("Введите " + number + "-е число: ");
+//     string? inputLine = Console.ReadLine() ?? "";
+//     return inputLine;
+// }
+
+// bool checkIfNumberIsSquare(int firstNumber, int secondNumber)
+// {
+//     return (firstNumber == Math.Pow(secondNumber, 2)) || (secondNumber == Math.Pow(firstNumber, 2));
+// }
+
+// void findIfOneNumberIsSquareOfAnother()
+// {
+//     string inputLineA = AskForNumber(1);
+//     string inputLineB = AskForNumber(2);
+//     int inputNumberA, inputNumberB;
+
+//     if (int.TryParse(inputLineA, out inputNumberA) && int.TryParse(inputLineB, out inputNumberB))
+//     {
+//         Console.WriteLine(checkIfNumberIsSquare(inputNumberA, inputNumberB) ?
+//             "Одно число является квадратом другого" :
+//             "Ни одно число не является квадратом другого");
+//     }
+//     else
+//     {
+//         Console.Write("Это не числа");
+//     }
+// }
+
+// findIfOneNumberIsSquareOfAnother();
+
+int ReadData(string line)
 {
-    Console.Write("Введите " + number + "-е число: ");
-    string? inputLine = Console.ReadLine();
+    // Выводим сообщение
+    Console.WriteLine(line);
+    // Считываем число
+    int number = int.Parse(Console.ReadLine() ?? "0");
+    return number;
+}
 
-    int inputNumber = 0;
-
-    if (inputLine != null)
+// Тест на квадрат
+bool SqrTest(int firstNum, int secondNum)
+{
+    if (firstNum == secondNum * secondNum)
     {
-
-        return inputLine;
+        return true;
     }
     else
     {
-        return null;
+        return false;
     }
 }
 
-bool checkIfNumberIsSquare(int firstNumber, int secondNumber)
+void PrintData(int firstNum, int secondNum)
 {
-    return (firstNumber == Math.Pow(secondNumber, 2)) || (secondNumber == Math.Pow(firstNumber, 2));
-}
-
-void findIfOneNumberIsSquareOfAnother()
-{
-    string inputLineA = AskForNumber(1);
-    string inputLineB = AskForNumber(2);
-    int inputNumberA, inputNumberB;
-
-    if (int.TryParse(inputLineA, out inputNumberA) && int.TryParse(inputLineB, out inputNumberB))
+    if (SqrTest(firstNum, secondNum))
     {
-        Console.WriteLine(checkIfNumberIsSquare(inputNumberA, inputNumberB) ?
-            "Одно число является квадратом другого" :
-            "Ни одно число не является квадратом другого");
+        Console.WriteLine("Число " + firstNum + " - квадрат числа " + secondNum);
     }
     else
     {
-        Console.Write("Это не числа");
+        Console.WriteLine("Число " + firstNum + " - не квадрат числа " + secondNum);
     }
 }
 
-findIfOneNumberIsSquareOfAnother();
+int num1 = ReadData("Введите число 1: ");
+int num2 = ReadData("Введите число 2: ");
+PrintData(num1, num2);
+PrintData(num2, num1);
