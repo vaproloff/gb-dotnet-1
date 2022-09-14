@@ -98,17 +98,15 @@ int[] SortArrayInsertion(int[] arr)
 }
 
 // Метод, принимает массив, возвращает отсортированный подсчётом новый массив
-int[] SortArrayCounting(int[] arr)
+int[] SortArrayCounting(int[] arr, int minElement, int maxElement)
 {
-    // Получаем массив с минимальным и максимальным значением изначального массива
-    int[] minMaxElements = FindMinMaxElements(arr);
     // Вводим массив, в котором будем подсчитывать количество элементов изначального массива
-    int[] countingArray = new int[minMaxElements[1] - minMaxElements[0] + 1];
+    int[] countingArray = new int[maxElement - minElement + 1];
 
     // Заполняем массив с количеством элементов
     for (int i = 0; i < arr.Length; i++)
     {
-        countingArray[arr[i] - minMaxElements[0]]++;
+        countingArray[arr[i] - minElement]++;
     }
 
     // Вводим новый массив и счётчик для него
@@ -121,7 +119,7 @@ int[] SortArrayCounting(int[] arr)
         while (countingArray[i] > 0)
         {
             // Корректировка на величину минимального элемента
-            sortedArray[currentIndex] = i + minMaxElements[0];
+            sortedArray[currentIndex] = i + minElement;
             // Увеличиваем счётчик нового массива
             currentIndex++;
             // Уменьшаем элемент количества
@@ -157,7 +155,8 @@ int numMax = 99;
 int[] array = FillArray(arrLength, numMin, numMax);
 int[] sortedArrBubble = SortArrayBubble((int[])array.Clone());
 int[] sortedArrInsertion = SortArrayInsertion((int[])array.Clone());
-int[] sortedArrCounting = SortArrayCounting(array);
+int[] minMaxElements = FindMinMaxElements(array);
+int[] sortedArrCounting = SortArrayCounting(array, minMaxElements[0], minMaxElements[1]);
 
 Console.Write("Изначальный  массив: ");
 Print1DArray(array);
@@ -200,7 +199,7 @@ timeStart = DateTime.Now;
 for (int i = 0; i < 1000000; i++)
 {
     // Для чистоты эксперимента со временем - добавил .Clone(), хотя метод и так выдаёт новый массив
-    sortedArrCounting = SortArrayCounting((int[])array.Clone());
+    sortedArrCounting = SortArrayCounting((int[])array.Clone(), minMaxElements[0], minMaxElements[1]);
 }
 timeFinish = DateTime.Now;
 PrintResult("Сортировка подсчётом. Затраченное время: " + (timeFinish - timeStart));
