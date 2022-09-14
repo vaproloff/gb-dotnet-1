@@ -58,7 +58,7 @@ int CountSumOddPositionElements(int[] arr)
 }
 
 // Метод, принимает массив, выводит в консоль повторы элементов (спасибо методу подсчёта в задаче 38)
-void PrintArrayRepeats(int[] arr)
+void PrintArrayRepeatsCount(int[] arr)
 {
     // Получаем массив с минимальным и максимальным значением изначального массива
     int[] minMaxElements = FindMinMaxElements(arr);
@@ -98,6 +98,34 @@ int[] FindMinMaxElements(int[] array)
     return minMaxElements;
 }
 
+// Метод, принимает массив, выводит в консоль повторы элементов способом изначальной сортировки
+void PrintArrayRepeatsSort(int[] arr)
+{
+    // Сначала читерски сортируем массив
+    Array.Sort(arr);
+
+    // В цикле проходим по массиву
+    for (int i = 1; i < arr.Length; i++)
+    {
+        // Если встречаем повтор - вводим количество элементов - 2 и новый счётчик
+        if (arr[i] == arr[i - 1])
+        {
+            int elementQuantity = 2;
+            int j = i + 1;
+            // Пока последующие элементы будут повторяться - подсчитываем их
+            while (j < arr.Length && arr[j] == arr[i - 1])
+            {
+                elementQuantity++;
+                i++;
+                j++;
+            }
+
+            // Выводим пары в консоль
+            PrintResult("Число " + arr[i] + " - " + elementQuantity + " шт.");
+        }
+    }
+}
+
 // Данные для генерации массива
 int arrLength = 20;
 int numMin = 0;
@@ -110,6 +138,9 @@ Print1DArray(array);
 
 // Выводим результат в консоль
 PrintResult("Сумма элементов на нечётных позициях: " + CountSumOddPositionElements(array));
+Console.WriteLine();
 
-// Выводим имеющиеся пары в консоль
-PrintArrayRepeats(array);
+// Выводим имеющиеся пары в консоль двумя способами
+PrintArrayRepeatsCount(array);
+Console.WriteLine();
+PrintArrayRepeatsSort((int[])array.Clone());
