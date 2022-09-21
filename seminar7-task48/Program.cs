@@ -58,4 +58,4 @@ int rows = ReadData("Введите количество строк: ");
 int cols = ReadData("Введите количество столбцов: ");
 
 Console.WriteLine($"Массив {rows}x{cols}:");
-Fill2DArrMN(Fill2DArrayMN(rows, cols, numMin, numMax));
+Print2DArray(Fill2DArrMN(rows, cols, numMin, numMax));
