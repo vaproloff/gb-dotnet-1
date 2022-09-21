@@ -21,7 +21,7 @@ void PrintResult(string line)
     Console.WriteLine(line);
 }
 
-// Метод, печатает одномерный массив
+// Метод, печатает двумерный массив
 void Print2DArray(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
@@ -55,26 +55,16 @@ int[,] Fill2DArray(int rows, int cols, int numMin, int numMax)
     return array2D;
 }
 
-// Метод, принимает массив и позицию, возвращает элемент
-int PickArrayElement(int[,] arr, int row, int col)
-{
-    return arr[row - 1, col - 1];
-}
-
-// Метод, принимает массив и позицию, проверяет наличие позиции в массиве
-bool CheckArrayElement(int[,] arr, int row, int col)
-{
-    bool ifArrayHasPosition = row > 0 && row <= arr.GetLength(0) &&
-                              col > 0 && col <= arr.GetLength(1);
-    return ifArrayHasPosition;
-}
-
 // Метод, принимает массив и позицию, печатает элемент в консоль
 void PrintArrayElement(int[,] arr, int row, int col)
 {
-    if (CheckArrayElement(arr, row, col))
+    // Проверяем вхождение позиции элемента в массив 
+    bool ifArrayHasPosition = row > 0 && row <= arr.GetLength(0) &&
+                              col > 0 && col <= arr.GetLength(1);
+
+    if (ifArrayHasPosition)
     {
-        PrintResult($"Элемент на позиции ({row},{col}): {PickArrayElement(arr, row, col)}");
+        PrintResult($"Элемент на позиции ({row},{col}): {arr[row - 1, col - 1]}");
     }
     else
     {
