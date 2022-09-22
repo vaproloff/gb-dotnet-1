@@ -15,21 +15,19 @@ int ReadData(string line)
     return number;
 }
 
-// Метод, печатает одномерный массив
-void Print2DArrayColored(double[,] arr)
+// Метод, принимает двумерный массив и массив цветов, печатает разными цветами по столбцам
+void Print2DArrayColored(double[,] arr, ConsoleColor[] colors)
 {
-    ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
-
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 0; j < arr.GetLength(1) - 1; j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
+            // Цветов - 16, индекс цвета берём как остаток от деления на 16, чтобы не выйти за пределы
             Console.ForegroundColor = colors[j % colors.Length];
-            Console.Write($"{Math.Round(arr[i, j], 2)}; ");
+            Console.Write($"{Math.Round(arr[i, j], 2)} ");
             Console.ResetColor();
         }
-
-        Console.WriteLine($"{Math.Round(arr[i, arr.GetLength(1) - 1], 2)}");
+        Console.WriteLine();
     }
 }
 
@@ -58,9 +56,11 @@ double[,] Fill2DArrayDouble(int rows, int cols, double numMin, double numMax)
 // Данные для генерации массива
 double numMin = 10;
 double numMax = 99;
+// Получаем массив консольных цветов
+ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
 
 int inputRows = ReadData("Введите количество строк: ");
 int inputCols = ReadData("Введите количество столбцов: ");
 
 Console.WriteLine($"Случайный массив вещественных чисел {inputRows}x{inputCols}:");
-Print2DArrayColored(Fill2DArrayDouble(inputRows, inputCols, numMin, numMax));
+Print2DArrayColored(Fill2DArrayDouble(inputRows, inputCols, numMin, numMax), colors);

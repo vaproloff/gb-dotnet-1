@@ -23,7 +23,7 @@ void PrintResult(string line)
 }
 
 // Метод, печатает одномерный массив, выделяет элемент с указанной позицией
-void Print2DArrColorElement(long[,] arr, int elementRow = -1, int elementCol = -1)
+void Print2DArrColorElement(double[,] arr, int elementRow = -1, int elementCol = -1)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
@@ -43,12 +43,12 @@ void Print2DArrColorElement(long[,] arr, int elementRow = -1, int elementCol = -
 }
 
 // Метод генерации двумерного массива числами Фибоначчи
-long[,] Fill2DArrayFibo(int rows, int cols)
+double[,] Fill2DArrayFibo(int rows, int cols)
 {
     // Создаём массив и два первых элемента
-    long[,] array2D = new long[rows, cols];
-    long prevNum = 0;
-    long nextNum = 1;
+    double[,] array2D = new double[rows, cols];
+    double prevNum = 0;
+    double nextNum = 1;
 
     // В циклах заполняем массив
     for (int i = 0; i < rows; i++)
@@ -65,7 +65,7 @@ long[,] Fill2DArrayFibo(int rows, int cols)
 }
 
 // Метод, принимает массив и позицию, печатает результат
-void PrintColorElement(long[,] arr, int row, int col)
+void PrintColorElement(double[,] arr, int row, int col)
 {
     // Проверяем вхождение позиции элемента в массив 
     bool ifArrayHasPosition = row > 0 && row <= arr.GetLength(0) &&
@@ -83,7 +83,7 @@ void PrintColorElement(long[,] arr, int row, int col)
 
 int inputRows = ReadData("Введите количество строк: ");
 int inputCols = ReadData("Введите количество столбцов: ");
-long[,] array2D = Fill2DArrayFibo(inputRows, inputCols);
+double[,] array2D = Fill2DArrayFibo(inputRows, inputCols);
 PrintResult($"Массив чисел Фибоначчи {inputRows}x{inputCols}:");
 Print2DArrColorElement(array2D);
 Console.WriteLine();
