@@ -33,7 +33,7 @@ int inputN = ReadData("Введите число N: ");
 
 if (inputM >= 0 && inputN >= 0)
 {
-    PrintResult($"Функция Акермана для M={inputM} и N={inputN}: {Akerman(inputM, inputN)}");
+    PrintResult($"Значение функции Акермана для M={inputM} и N={inputN}: {Akerman(inputM, inputN)}");
 }
 else
 {
