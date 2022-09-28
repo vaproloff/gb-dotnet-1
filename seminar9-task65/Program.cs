@@ -24,7 +24,7 @@ void PrintResult(string line)
 string LineMtoN(int m, int n)
 {
     if (m == n) return n + ""; // Точка выхода, если числа сравнялись - возвращаем любое
-    return m + " " + LineMtoN(m < n ? m + 1 : m - 1, n); // В зависимости от чисел вычитаем или прибывляем 1
+    return m + " " + LineMtoN(m < n ? m + 1 : m - 1, n); // Вычитаем или прибывляем 1 в направлении N
 }
 
 int inputM = ReadData("Введите число M: ");

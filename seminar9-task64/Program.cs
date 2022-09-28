@@ -23,9 +23,8 @@ void PrintResult(string line)
 // Метод, число N, возвращает строку чисел от N до 1
 string LineGenRec(int numN)
 {
-    if (numN == 0) return ""; //Точка остановки
-    string outline = numN + " " + LineGenRec(numN - 1);
-    return outline;
+    if (numN == 1) return "1"; // Точка остановки
+    return numN + " " + LineGenRec(numN > 0 ? numN - 1 : numN + 1); // Изменяем на 1 в направлении 1
 }
 
 int inputNum = ReadData("Введите число: ");
